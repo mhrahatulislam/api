@@ -8,20 +8,20 @@ public class ResponseModel {
     String description;
     String category;
     String image;
-    String rating;
+//    String rating;
 
     public ResponseModel() {
     }
 
-    public ResponseModel(String id, String title, String price, String description, String category, String image, String rating) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.description = description;
-        this.category = category;
-        this.image = image;
-        this.rating = rating;
-    }
+//    public ResponseModel(String id, String title, String price, String description, String category, String image, String rating) {
+//        this.id = id;
+//        this.title = title;
+//        this.price = price;
+//        this.description = description;
+//        this.category = category;
+//        this.image = image;
+////        this.rating = rating;
+//    }
 
     public String getId() {
         return id;
@@ -71,11 +71,11 @@ public class ResponseModel {
         this.image = image;
     }
 
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
+//    public String getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(String rating) {
+//        this.rating = rating;
+//    }
 }

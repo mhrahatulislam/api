@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface ApiInterface {
 
-    @GET("product")
+    @GET("products")
    Call<List<ResponseModel>> getData();
 }

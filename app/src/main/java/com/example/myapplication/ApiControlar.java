@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiControlar {
 
-    private static final String url="https://fakestoreapi.com/products";
+    private static final String url="https://fakestoreapi.com/";
     private static ApiControlar clientobject;
 
     private static Retrofit retrofit;

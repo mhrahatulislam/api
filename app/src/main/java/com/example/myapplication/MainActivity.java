@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,30 +22,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        recyclerView=findViewById(R.id.recview);
+        recyclerView = findViewById(R.id.recview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        processdata();
+        processData();
     }
 
-    public void processdata(){
-        Call<List<ResponseModel>> Call=ApiControlar
-                .getInstance()
-                .getapi()
-                .getData();
-
-        Call.enqueue(new Callback<List<ResponseModel>>() {
+    public void processData() {
+        Call<List<ResponseModel>> call = ApiControlar.getInstance().getapi().getData();
+        call.enqueue(new Callback<List<ResponseModel>>() {
             @Override
-            public void onResponse(retrofit2.Call<List<ResponseModel>> call, Response<List<ResponseModel>> response) {
+            public void onResponse(@NonNull retrofit2.Call<List<ResponseModel>> call, @NonNull Response<List<ResponseModel>> response) {
 
                 List<ResponseModel> data = response.body();
+                AdapterClass adapterClass = new AdapterClass(data);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+                recyclerView.setAdapter(adapterClass);
             }
 
             @Override
-            public void onFailure(retrofit2.Call<List<ResponseModel>> call, Throwable t) {
+            public void onFailure(@NonNull retrofit2.Call<List<ResponseModel>> call, @NonNull Throwable t) {
 
-                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
 
             }
         });
